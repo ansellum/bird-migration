@@ -6,7 +6,7 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy contents of package.json files
-#COPY package*.json ./
+COPY package*.json ./
 # TODO: docker files.
 
 # Start the app with the serve command?
