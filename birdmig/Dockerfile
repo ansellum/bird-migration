@@ -1,21 +1,18 @@
 # Start an image with node base image.
-# I'll be honest, I have no idea what the node:18-alpine image is
+# node:18 is essentially node.js to help construct the web file.
 FROM node:18-alpine
 
-# Sets the /app directory. This is the current app directory???
+# Sets the /app directory, or the CWDir.
 WORKDIR /app
 
-# Copy contents of package.json files
+# Copy contents of package.json files for utility.
 COPY package*.json ./
-# TODO: docker files.
+#COPY . .
 
-# Start the app with the serve command?
-# RUN ["cd "]
-#Services:
-    #Web:
-        #RUN
-    # backend:
-        #[...]
+# Run additional commands for startup
+RUN npm install 
+COPY . ./
 
-# Enter the program
-# ENTRYPOINT["..."]
+# Begin the program
+#CMD [ "npm" ]
+ENTRYPOINT [ "npm",  "start" ]
